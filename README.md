@@ -288,6 +288,8 @@ sudo mkdir /var/www/projectLEMP
 sudo chown -R $USER:$USER /var/www/projectLEMP
 ```
 
+![mkdir projectLEMP](./images/4.%20mkdir%20projectLEMP.png)
+
 * Open a new configuration file in Nginx's `sites-available` directory using your preferred command line. Here, we'll use `nano`:
 
 ```bash
