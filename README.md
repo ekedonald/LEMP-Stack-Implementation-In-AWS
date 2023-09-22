@@ -485,7 +485,7 @@ CREATE TABLE example_database.todo_list (item_id INT AUTO_INCREMENT,content VARC
 ```
 ![create table](./images/6.%20CREATE%20TABLE.png)
 
-* Inset a few rows of content in the test table. This is done a couple times to populate the table.
+* Inset a few rows of content in the test table. This is done a couple of times to populate the table.
 
 ```bash
 mysql> INSERT INTO example_database.todo_list (content) VALUES ("My first important item");
