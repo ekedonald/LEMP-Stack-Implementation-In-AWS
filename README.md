@@ -1,11 +1,15 @@
 # LEMP Stack Implementation On AWS
 ___
-LEMP is an open-source web application stack used to develop web applications. The term LEMP is an acronym that represents L for the Linux Operating system, Nginx (pronounced as engine-x, hence the E in the acronym) web server, M for MySQL database, and P for PHP scripting language.
+LEMP is an open-source web application stack used to develop web applications. The term LEMP is an acronym that represents **L** for the **Linux Operating system**, **Nginx** (pronounced as **engine-x**, hence the **E** in the acronym) web server, **M** for **MySQL database**, and **P** for **PHP scripting language**.
 
 The __LEMP__ stack is a combination of four open-source technologies that are used in web development. These technologies include:
+
 * __Linux__: The operating system that runs the web server.
+
 * __Nginx__: The web server software that handles HTTP requests.
+
 * __MySQL__: The relational database management system that stores the website's data.
+
 * __PHP__: The programming language used to build dynamic web applications.
 
 ## LEMP Stack Architecture
@@ -13,7 +17,9 @@ The __LEMP__ stack is a combination of four open-source technologies that are us
 Linux is the operating system and the first layer of the architecture. It binds every other layer together. It is free and open-source and well known to be highly secure and less vulnerable to malware and viruses even if compared to Windows or macOS.
 
 ### Nginx
-It is a web server that follows an event-driven approach and handles multiple requests within one thread. Nginx supports all Unix-like OS and also supports windows partially. When a web browser requests a web page that request is handled by the web server, here that web server is Nginx. Then the web server passes that request to server-side technologies used in the LEMP stack for instance as a server-side scripting language like PHP to communicate with the server and database.
+It is a web server that follows an event-driven approach and handles multiple requests within one thread. Nginx supports all Unix-like OS and also supports windows partially. 
+
+When a web browser requests a web page that request is handled by the web server, here that web server is Nginx. Then the web server passes that request to server-side technologies used in the LEMP stack for instance as a server-side scripting language like PHP to communicate with the server and database.
 
 ### MySQL
 It is an open-source SQL-based database that is used to store data and manipulate data while maintaining data consistency and integrity. It organizes data in tabular form in rows and columns.
@@ -33,6 +39,7 @@ MySQL is used to store and manage the website’s data. PHP communicates with My
 
 ### Step 1: Launch An EC2 Instance
 The following steps are taken to launch an EC2 Instance on AWS:
+
 * On the EC2 Dashboard, click on the __Launch Instance__ button.
 
 ![Launch Instance1](./images/1.%20Launch%20Instance1.png)
@@ -82,7 +89,7 @@ The following steps are taken to SSH into the EC2 Instance.
 
 * On your terminal, run the following command `cd Downloads` to go to the location of the `.pem` private key file.
 
-* Run the code shown below to change file permisssions for the `.pem` priavte key file:
+* Run the code shown below to change file permisssions of the `.pem` private key file:
 
 ```bash
 sudo chmod 0400 <private-key-name>.pem
@@ -98,6 +105,8 @@ ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
 ![SSH Instance2](./images/1.%20SSH%20Instance2.png)
 
 ### Step 3: Installing The Nginx Web Server
+The following steps are taken to install the Nginx web server:
+
 * Update the list of packages in the package manager.
 
 ```bash
@@ -109,7 +118,7 @@ sudo apt update
 * Run the Nginx package installation with the `-y` flag to confirm installation.
 
 ```bash
-sudo apt install nginx
+sudo apt install nginx -y
 ```
 
 ![install nginx](./images/2.%20install%20nginx.png)
@@ -123,7 +132,9 @@ sudo systemctl status nginx
 ![sysytemctl status nginx](./images/2.%20systemctl%20status%20nginx.png)
 
 ### Step 4: Updating The Firewall
-Before any traffic can be received by the web server, you need to open TCP port 80 which is the default port browsers use to connect to access web pages on the internet. The following steps are taken to open TCP port 80:
+Before any traffic can be received by the web server, you need to open TCP port 80 which is the default port browsers use to connect to access web pages on the internet. 
+
+The following steps are taken to open TCP port 80:
 
 * On the EC2 Dashboard, click on the Running Instances tab.
 
@@ -133,7 +144,7 @@ Before any traffic can be received by the web server, you need to open TCP port 
 
 ![Launch Instance9](./images/1.%20Launch%20Instance9.png)
 
-* On the Instance Summary of the EC2 Instance, click on the Security tab highlighted below:
+* On the Instance Summary of the EC2 Instance, click on the Security tab highlighted as shown below:
 
 ![Inbound Rules1](./images/2.%20Inbound%20Rules1.png)
 
@@ -141,11 +152,11 @@ Before any traffic can be received by the web server, you need to open TCP port 
 
 ![Inbound Rules2](./images/2.%20Inbound%20Rules2.png)
 
-* Click on the Edit Inbound Rules button shown below:
+* Click on the Edit Inbound Rules button as shown below:
 
 ![Inbound Rules3](./images/2.%20Inbound%20Rules3.png)
 
-* Click on the Add Rule button shown below:
+* Click on the Add Rule button as shown below:
 
 ![Inbound Rules4](./images/2.%20Inbound%20Rules4.png)
 
@@ -202,7 +213,7 @@ This will connect to the MySQL server as the administrative user root. You shoul
 
 ![sudo mysql](./images/3.%20sudo%20mysql.png)
 
-* Run a security script that comes pre-installed with MySQL. This script removes insecure default settings and locks down access to your database system. Before running the script, you will set a password for the root user, using *mysql_native_password* as the as the default authentication method. You are defining this user's password as `PassWord.1`
+* Run a security script that comes pre-installed with MySQL. This script removes insecure default settings and locks down access to your database system. Before running the script, you will set a password for the root user, using *mysql_native_password* as the as the default authentication method. You are defining this user's password as `PassWord.1`.
 
 ```bash
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
@@ -251,7 +262,9 @@ sudo mysql_secure_installation
 ![validate password7](./images/3.%20validate%20password7.png)
 
 ### Step 6: Installing PHP
-Nginx requires an external program to handle PHP processing and act as a bridge between the PHP interpreter itself and the web server. This allows for a better overall performance in most PHP-based websites but it requires additional configration. You'll need to install `php-fpm` i.e. PHP fastCGI Process Manager and tell Nginx to pass PHP requests to this software for processing. Additionally, you'll need `php-mysql`, a PHP module that allows PHP to communicate with MySQL-based databases. Core PHP packages will automatically be installed as dependencies.
+Nginx requires an external program to handle PHP processing and act as a bridge between the PHP interpreter itself and the web server. This allows for a better overall performance in most PHP-based websites but it requires additional configration. You'll need to install `php-fpm` i.e. PHP fastCGI Process Manager and tell Nginx to pass PHP requests to this software for processing. 
+
+Additionally, you'll need `php-mysql`, a PHP module that allows PHP to communicate with MySQL-based databases. Core PHP packages will automatically be installed as dependencies.
 
 * To install these 2 packages run the following command with the `-y` flag to confirm installation:
 
@@ -423,7 +436,7 @@ mysql> CREATE DATABASE `example_database`;
 
 ![create database](./images/6.%20CREATE%20DATABASE.png)
 
-* Create a new user and grant him full privileges on the database. The command below creates a new user named `example_user`, using *mysql_native_password* as default authentication method. The user's password is defined as `PassWord.1` but you can choose any password of your choice.
+* Create a new user and grant him full privileges on the database. The command below creates a new user named `example_user` using *mysql_native_password* as default authentication method. The user's password is defined as `PassWord.1` but you can choose any password of your choice.
 
 ```bash
 mysql>  CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
@@ -488,7 +501,7 @@ mysql> INSERT INTO example_database.todo_list (content) VALUES ("My first import
 mysql>  SELECT * FROM example_database.todo_list;
 ```
 
-* You will see the following output.
+* You will see the following output:
 
 ![select from](./images/6.%20SELECT%20FROM.png)
 
@@ -505,7 +518,7 @@ mysql> exit
 ```bash
 nano /var/www/projectLEMP/todo_list.php
 ```
-* Copy this content into the `todo_list.php` script.
+* Copy the code below into the `todo_list.php` script.
 
 ```bash
 <?php
