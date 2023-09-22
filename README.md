@@ -383,7 +383,7 @@ http://<Public-IP-Address>:80
 
 ![http public IP](./images/4.%20http%20public%20IP.png)
 
-* Finally, if you see the the text from the *echo* command appended to the `index.html` file, it means the Nginx site is working.
+* Finally, if you see the text from the *echo* command appended to the `index.html` file, it means the Nginx site is working.
 
 ### Step 8: Testing PHP With Nginx
 The LEMP stack is completely installed and fully operational. You can test it to validate that Nginx can correctly hand `.php` files off to your PHP processor.
@@ -420,7 +420,7 @@ sudo rm /var/www/projectLEMP/info.php
 ```
 
 ### Step 9: Retrieving Data From MySQL Database With PHP
-The following steps are taken to retrieve dat afrom MySQL database with PHP:
+The following steps are taken to retrieve data from MySQL database with PHP:
 
 * Connect to the MySQL console using the root account.
 
