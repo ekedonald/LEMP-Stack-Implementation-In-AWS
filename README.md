@@ -1,5 +1,6 @@
 # LEMP Stack Implementation On AWS
 ___
+## What Is A LEMP Stack?
 LEMP is an open-source web application stack used to develop web applications. The term LEMP is an acronym that represents **L** for the **Linux Operating system**, **Nginx** (pronounced as **engine-x**, hence the **E** in the acronym) web server, **M** for **MySQL database**, and **P** for **PHP scripting language**.
 
 The __LEMP__ stack is a combination of four open-source technologies that are used in web development. These technologies include:
@@ -25,7 +26,7 @@ When a web browser requests a web page that request is handled by the web server
 It is an open-source SQL-based database that is used to store data and manipulate data while maintaining data consistency and integrity. It organizes data in tabular form in rows and columns.
 
 ### PHP
-It is is a scripting language that works on the server-side and communicates with the database MySQL and does all operations which the user requests like fetching data, adding data, or manipulating data, or processing the data.
+It is a scripting language that works on the server-side and communicates with the database MySQL and does all operations that user requests like fetching data, adding data, manipulating data, or processing the data.
 
 ## How Does The LEMP Stack Work?
 The LEMP stack works by using Nginx as the web server, which listens for HTTP requests and forwards them to the appropriate PHP script. The PHP script generates a response, which is then sent back to the user via Nginx.
@@ -115,7 +116,7 @@ sudo apt update
 
 ![apt update](./images/2.%20apt%20update.png)
 
-* Run the Nginx package installation with the `-y` flag to confirm installation.
+* Run the Nginx package installation with the `-y` flag to confirm the installation.
 
 ```bash
 sudo apt install nginx -y
@@ -123,7 +124,7 @@ sudo apt install nginx -y
 
 ![install nginx](./images/2.%20install%20nginx.png)
 
-* To verify that Nginx was successfully and is running as a service in Ubuntu, run the following command:
+* To verify that Nginx was successful and is running as a service in Ubuntu, run the following command:
 
 ```bash
 sudo systemctl status nginx
@@ -164,7 +165,7 @@ The following steps are taken to open TCP port 80:
 
 ![Inbound Rules5](./images/2.%20Inbound%20Rules5.png)
 
-* Finally, the server can now be accessed locally and from any IPv4 addres. To check if you can access the server locally in Ubuntu, run the following command:
+* Finally, the server can now be accessed locally and from any IPv4 address. To check if you can access the server locally in Ubuntu, run the following command:
 
 ```bash
 curl http://localhost:80
@@ -195,7 +196,7 @@ curl -s http://169.254.169.254/latest/meta-data/public-ipv4
 ### Step 5: Installing MySQL
 The following steps are taken to install MySQL:
 
-* Install the MySQL package using apt with the `-y` flag to confirm installation.
+* Install the MySQL package using apt with the `-y` flag to confirm the installation.
 
 ```bash
 sudo apt install mysql-server -y
@@ -213,7 +214,7 @@ This will connect to the MySQL server as the administrative user root. You shoul
 
 ![sudo mysql](./images/3.%20sudo%20mysql.png)
 
-* Run a security script that comes pre-installed with MySQL. This script removes insecure default settings and locks down access to your database system. Before running the script, you will set a password for the root user, using *mysql_native_password* as the as the default authentication method. You are defining this user's password as `PassWord.1`.
+* Run a security script that comes pre-installed with MySQL. This script removes insecure default settings and locks down access to your database system. Before running the script, you will set a password for the root user, using *mysql_native_password* as the default authentication method. You are defining this user's password as `PassWord.1`.
 
 ```bash
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
@@ -241,7 +242,7 @@ sudo mysql_secure_installation
 
 ![validate password2](./images/3.%20validate%20password2.png)
 
-* Decline changing password for root by typing `n`.
+* Decline to change the password for root by typing `n`.
 
 ![validate password3](./images/3.%20validate%20password3.png)
 
@@ -253,7 +254,7 @@ sudo mysql_secure_installation
 
 ![validate password5](./images/3.%20validate%20password5.png)
 
-* Remove test database and access to it by typing `y`.
+* Remove the test database and access by typing `y`.
 
 ![validate password6](./images/3.%20validate%20password6.png)
 
@@ -262,7 +263,7 @@ sudo mysql_secure_installation
 ![validate password7](./images/3.%20validate%20password7.png)
 
 ### Step 6: Installing PHP
-Nginx requires an external program to handle PHP processing and act as a bridge between the PHP interpreter itself and the web server. This allows for a better overall performance in most PHP-based websites but it requires additional configration. You'll need to install `php-fpm` i.e. PHP fastCGI Process Manager and tell Nginx to pass PHP requests to this software for processing. 
+Nginx requires an external program to handle PHP processing and act as a bridge between the PHP interpreter itself and the web server. This allows for better overall performance in most PHP-based websites but it requires additional configuration. You'll need to install `php-fpm` i.e. PHP FastCGI Process Manager and tell Nginx to pass PHP requests to this software for processing. 
 
 Additionally, you'll need `php-mysql`, a PHP module that allows PHP to communicate with MySQL-based databases. Core PHP packages will automatically be installed as dependencies.
 
@@ -273,7 +274,7 @@ sudo apt install php-fpm php-mysql
 ```
 
 ### Step 7: Configuring Nginx To Use PHP Processor
-The following steps are taken to configure Nginx to use PHP processor:
+The following steps are taken to configure Nginx to use a PHP processor:
 
 * Create the root web directory for *your_domain* as shown below:
 
@@ -281,13 +282,13 @@ The following steps are taken to configure Nginx to use PHP processor:
 sudo mkdir /var/www/projectLEMP
 ```
 
-* Assign ownership of the directory with $USER environment variable which will reference your current system user as shwon below:
+* Assign ownership of the directory with $USER environment variable which will reference your current system user as shown below:
 
 ```bash
 sudo chown -R $USER:$USER /var/www/projectLEMP
 ```
 
-* Open a new configuration file in Nginx's `sites-available` directory using your preferred command-line. Here, we'll use `nano`:
+* Open a new configuration file in Nginx's `sites-available` directory using your preferred command line. Here, we'll use `nano`:
 
 ```bash
 sudo nano /etc/nginx/sites-available/projectLEMP
@@ -329,7 +330,7 @@ Here's what each of these directives and location blocks do:
 
 2. `root`: Defines the document root where the files served by this website are stored.
 
-3. `index`: Defines in which order Nginx will prioritize index files for this website. It is a common practice to list `index.html` files with a higher precedence than `index.php` files to allow for quickly setting up a maintenance landing page in PHP applications. You can adjust these settings to better suit your application needs.
+3. `index`: Defines in which order Nginx will prioritize index files for this website. It is a common practice to list `index.html` files with higher precedence than `index.php` files to allow for quickly setting up a maintenance landing page in PHP applications. You can adjust these settings to better suit your application needs.
 
 4. `server_name`: Defines which domain names and/or IP addresses this server block should respond for. **Point this directive to your server's domain name or public IP address**.
 
@@ -337,7 +338,7 @@ Here's what each of these directives and location blocks do:
 
 6. `location ~ \-php$`: This location block handles the actual PHP processing by pointing Nginx to the fastogi-php.conf configuration file and the `php7.4-fpm.sock` file, which declares what socket is associated with `php-fpm`.
 
-7. `location ~ /\.ht`: The last location block deals with `htaccess` files, which Nginx does not process. By adding the deny all directive, if any `.htaccess` files happen to find their way into the document root ,they will not be served to visitors.
+7. `location ~ /\.ht`: The last location block deals with `htaccess` files, which Nginx does not process. By adding the deny all directive, if any `.htaccess` files happen to find their way into the document root,they will not be served to visitors.
 
 * When you're done editing, save and close the file. 
 
@@ -347,7 +348,7 @@ Here's what each of these directives and location blocks do:
 sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/
 ```
 
-* This will tell Nginx to use the configuration next time it is reloaded. You can test your configuration for syntax errors by running the following command:
+* This will tell Nginx to use the configuration the next time it is reloaded. You can test your configuration for syntax errors by running the following command:
 
 ```bash
 sudo nginx -t
@@ -357,7 +358,7 @@ You'll see the following message if no errors were reported.
 
 ![sudo nginx -t](./images/4.%20sudo%20nginx%20-t.png)
 
-* Disable default Nginx host configured to listen on port 80 using the command below.
+* Disable the default Nginx host configured to listen on port 80 using the command below.
 
 ```bash
 sudo unlink /etc/nginx/sites-enabled/default
@@ -369,13 +370,13 @@ sudo unlink /etc/nginx/sites-enabled/default
 systemctl reload nginx
 ```
 
-* The website is now active but the webroot `/var/www/projectLEMP` is still empy. Create an `index.html` file in that directory in order to test if the new server block is functional as shown below:
+* The website is now active but the webroot `/var/www/projectLEMP` is still empty. Create an `index.html` file in that directory to test if the new server block is functional as shown below:
 
 ```bash
 sudo echo 'Hello LEMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectLEMP/index.html
 ```
 
-* Go to your browser and open the webiste URL using your IP address.
+* Go to your browser and open the website URL using your IP address.
 
 ```bash
 http://<Public-IP-Address>:80
