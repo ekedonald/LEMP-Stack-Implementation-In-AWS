@@ -436,7 +436,7 @@ mysql> CREATE DATABASE `example_database`;
 
 ![create database](./images/6.%20CREATE%20DATABASE.png)
 
-* Create a new user and grant him full privileges on the database. The command below creates a new user named `example_user` using *mysql_native_password* as default authentication method. The user's password is defined as `PassWord.1` but you can choose any password of your choice.
+* Create a new user and grant him full privileges on the database. The command below creates a new user named `example_user` using *mysql_native_password* as the default authentication method. The user's password is defined as `PassWord.1` but you can choose any password of your choice.
 
 ```bash
 mysql>  CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
