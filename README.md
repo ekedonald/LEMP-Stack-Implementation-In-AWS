@@ -1,7 +1,7 @@
 # LEMP Stack Implementation On AWS
 ___
 ## What Is A LEMP Stack?
-LEMP is an open-source web application stack used to develop web applications. The term LEMP is an acronym that represents **L** for the **Linux Operating system**, **Nginx** (pronounced as **engine-x**, hence the **E** in the acronym) web server, **M** for **MySQL database**, and **P** for **PHP scripting language**.
+LEMP is an open-source web application stack used to develop web applications. The term LEMP is an acronym that represents **L** for the **Linux Operating system**, **Nginx** (pronounced as **engine-x**, hence the **E** in the acronym) **web server**, **M** for **MySQL database**, and **P** for **PHP scripting language**.
 
 The __LEMP__ stack is a combination of four open-source technologies that are used in web development. These technologies include:
 
@@ -18,7 +18,7 @@ The __LEMP__ stack is a combination of four open-source technologies that are us
 Linux is the operating system and the first layer of the architecture. It binds every other layer together. It is free and open-source and well known to be highly secure and less vulnerable to malware and viruses even if compared to Windows or macOS.
 
 ### Nginx
-It is a web server that follows an event-driven approach and handles multiple requests within one thread. Nginx supports all Unix-like OS and also supports windows partially. 
+It is a web server that follows an event-driven approach and handles multiple requests within one thread. Nginx supports all Unix-like OS and also supports Windows partially. 
 
 When a web browser requests a web page that request is handled by the web server, here that web server is Nginx. Then the web server passes that request to server-side technologies used in the LEMP stack for instance as a server-side scripting language like PHP to communicate with the server and database.
 
