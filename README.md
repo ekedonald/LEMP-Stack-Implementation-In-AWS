@@ -98,7 +98,7 @@ sudo chmod 400 <private-key-name>.pem
 
 ![SSH Instance1](./images/1.%20SSH%20Instance1.png)
 
-* Finally, connect to the EC2 Instance by running the command shown below:
+* Finally, SSH into the EC2 Instance by running the command shown below:
 
 ```bash
 ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
