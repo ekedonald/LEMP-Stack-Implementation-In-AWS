@@ -93,7 +93,7 @@ The following steps are taken to SSH into the EC2 Instance.
 * Run the code shown below to change file permisssions of the `.pem` private key file:
 
 ```bash
-sudo chmod 0400 <private-key-name>.pem
+sudo chmod 400 <private-key-name>.pem
 ```
 
 ![SSH Instance1](./images/1.%20SSH%20Instance1.png)
