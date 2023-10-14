@@ -545,7 +545,7 @@ try {
 
 ![nano /var/www/projectLEMP/todo_list](./images/6.%20nano%20:var:www:projectLEMP:todo_list.png)
 
-* Save and close when you are done editing.
+* Save and close when editing is complete.
 
 * You can now access this page in your web browser by visiting the public IP address configured for your website followed by `/todo_list.php`.
 
